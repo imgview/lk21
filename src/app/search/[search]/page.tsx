@@ -7,7 +7,7 @@ import { FaArrowLeft } from "react-icons/fa";
 export default async function SearchResultPage({ params }: { params: { search: string } }) {
   const { search } = await Promise.resolve(params);
   const query = decodeURIComponent(search);
-  const movies = await FetchMovies(`https://tv.lk21official.cc/?s=${encodeURIComponent(query)}`);
+  const movies = await FetchMovies(`https://tv9.lk21official.cc/search?s=${encodeURIComponent(query)}`);
 
   return (
     <div className="min-h-screen bg-[#141414] text-white font-sans">
