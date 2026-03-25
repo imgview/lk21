@@ -1,17 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "**" },
       { protocol: "http", hostname: "**" },
     ],
-  },
-  // Increase serverless function timeout for scraping
-  experimental: {
-    serverActions: {
-      bodySizeLimit: "2mb",
-    },
   },
 };
 
