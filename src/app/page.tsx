@@ -1,5 +1,7 @@
+export const dynamic = "force-dynamic";
+
 import MovieCarousel from "@/app/components/MovieCarousel";
-import FetchMovies from "@/app/components/FetchMovies"
+import FetchMovies from "@/app/components/FetchMovies";
 import SideMenu from "@/app/components/SideMenu";
 import MovieBanner from "@/app/components/MovieBanner";
 import { randomInt } from "crypto";
@@ -12,11 +14,15 @@ export default async function HomePage() {
     FetchMovies("https://tv.lk21official.cc/rating/")
   ]);
 
+  const bannerMovie = recommendMovies.length > 0
+    ? recommendMovies[randomInt(recommendMovies.length)]
+    : latestMovies[0] ?? null;
+
   return (
     <div className="min-h-screen bg-[#141414] text-white font-sans">
       <SideMenu />
       <main className="ml-16 pb-20">
-        <MovieBanner movie={recommendMovies[randomInt(recommendMovies.length)]} />
+        {bannerMovie && <MovieBanner movie={bannerMovie} />}
         <MovieCarousel title="New on Web" movies={latestMovies} />
         <MovieCarousel title="Today's Top Picks for You" movies={recommendMovies} />
         <MovieCarousel title="Users Favorites" movies={popularMovies} />
